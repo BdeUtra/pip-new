@@ -1,0 +1,12 @@
+#!/bin/bash
+DIR="/Users/bruno/code"
+virtual_envs=`find $DIR -maxdepth 4 -name "activate"`
+
+for env in $virtual_envs; do
+    project=`echo $env | awk '{split($0,a,"/"); print a[5]}'`
+    echo "Activating $project virtual env"
+    source $env
+    python bin/pip-review.py -v -s
+    echo "Deactivating $project virtual env"
+    deactivate
+done
