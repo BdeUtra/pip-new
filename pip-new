@@ -1,5 +1,8 @@
 #!/bin/bash
+
+# directory containing the projects
 DIR="/Users/bruno/code"
+# adjust the maxdepth if needed
 virtual_envs=`find $DIR -maxdepth 4 -name "activate"`
 
 for env in $virtual_envs; do
