@@ -6,10 +6,13 @@ DIR="/Users/bruno/code"
 virtual_envs=`find $DIR -maxdepth 4 -name "activate"`
 
 for env in $virtual_envs; do
+    # adjust the print statement of awk to reflect your project name
     project=`echo $env | awk '{split($0,a,"/"); print a[5]}'`
     echo "Activating $project virtual env"
     source $env
-    python bin/pip-review.py -v -s
+    # adjust the path
+    ABS_PATH_TO_PY_FILE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/lib/pip-review.py -v -s"
+    python $ABS_PATH_TO_PY_FILE
     echo "Deactivating $project virtual env"
     deactivate
 done
