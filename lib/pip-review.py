@@ -151,7 +151,7 @@ def send_email_with_new_packages(pkgs):
         msg['To'] = ''
         msg['Subject'] = 'Pip updates for project %s' % project_name
 
-        mailserver = smtplib.SMTP('smtp.gmail.com', 587)
+        mailserver = smtplib.SMTP('smtp.gmail.com', 587, 'mail.letolab.com')
         mailserver.ehlo()
         mailserver.starttls()
         mailserver.ehlo()
